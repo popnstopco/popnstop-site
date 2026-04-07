@@ -1178,20 +1178,36 @@ document.getElementById('lead-form').addEventListener('submit', async e => {
   const lbl = document.getElementById('btn-label');
   btn.disabled = true; lbl.textContent = 'Sending...';
 
-  const lead = {
-    id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
-    name, company, city, email, phone,
-    employeeCount: emp,
-    message: msg,
+  const id = Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+  const cityLower = city.toLowerCase();
+  const market = /michigan|detroit|\bmi\b|grand rapids|lansing|flint|ann arbor|kalamazoo/.test(cityLower)
+    ? 'Michigan'
+    : /colorado|denver|\bco\b|boulder|fort collins|colorado springs|aurora/.test(cityLower)
+    ? 'Colorado'
+    : 'Michigan';
+
+  // FreshTrack-compatible lead written directly to leads_v1
+  const ftLead = {
+    id,
+    company,
+    contactName: name,
+    contactTitle: '',
+    email,
+    phone,
+    employees: emp,
+    market,
     status: 'New',
+    assignee: 'Karan',
+    notes: [city ? 'Location: ' + city : '', msg || ''].filter(Boolean).join(' · '),
     source: 'website',
-    notes: '',
-    createdAt: Date.now(),
-    updatedAt: Date.now(),
+    createdDate: new Date().toISOString().slice(0, 10),
   };
 
   if (db) {
-    try { await db.ref('website_leads/' + lead.id).set(lead); }
+    try {
+      await db.ref('leads_v1/' + id).set(ftLead);
+      await db.ref('website_leads/' + id).set({ id, name, company, city, email, phone, employeeCount: emp, message: msg, status: 'New', source: 'website', createdAt: Date.now() });
+    }
     catch(err) { console.warn('Firebase save failed:', err.message); }
   }
 
