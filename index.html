@@ -151,12 +151,16 @@ img { display: block; }
 }
 .hero-logo-wrap {
   position: relative;
-  filter: drop-shadow(0 8px 32px rgba(27,111,216,0.3)) drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
 }
-.hero-logo-wrap img { width: 100%; max-width: 460px; height: auto; display: block; }
+.hero-logo-wrap img { width: 100%; max-width: 420px; height: auto; display: block; border-radius: 10px; }
 .hero-logo-glow {
   position: absolute; inset: -80px;
-  background: radial-gradient(ellipse at center, rgba(25,70,160,0.65) 0%, rgba(15,45,110,0.35) 45%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(245,168,34,0.08) 0%, transparent 70%);
   pointer-events: none; z-index: -1;
   border-radius: 50%;
 }
@@ -987,6 +991,13 @@ async function fetchGoogleReviews() {
             </div>
           </div>
           <div class="promise-item">
+            <div class="promise-icon">📞</div>
+            <div>
+              <h4>Call or Text Us</h4>
+              <p><a href="tel:+12485094314" style="color:var(--blue);text-decoration:none;font-weight:600;">(248) 509-4314</a></p>
+            </div>
+          </div>
+          <div class="promise-item">
             <div class="promise-icon">📍</div>
             <div>
               <h4>Serving Michigan &amp; Colorado</h4>
@@ -1068,6 +1079,7 @@ async function fetchGoogleReviews() {
       </div>
       <div class="footer-col">
         <h4>Get in Touch</h4>
+        <a href="tel:+12485094314">(248) 509-4314</a>
         <a href="mailto:popnstopco@gmail.com">popnstopco@gmail.com</a>
         <a href="#contact">Request a Quote</a>
       </div>
