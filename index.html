@@ -151,16 +151,12 @@ img { display: block; }
 }
 .hero-logo-wrap {
   position: relative;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  filter: drop-shadow(0 8px 32px rgba(27,111,216,0.3)) drop-shadow(0 2px 8px rgba(0,0,0,0.4));
 }
-.hero-logo-wrap img { width: 100%; max-width: 420px; height: auto; display: block; border-radius: 10px; }
+.hero-logo-wrap img { width: 100%; max-width: 460px; height: auto; display: block; filter: contrast(1.15) brightness(1.08); }
 .hero-logo-glow {
   position: absolute; inset: -80px;
-  background: radial-gradient(ellipse at center, rgba(245,168,34,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.38) 45%, transparent 70%);
   pointer-events: none; z-index: -1;
   border-radius: 50%;
 }
