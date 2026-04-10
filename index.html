@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Pop 'N' Stop Markets | Workplace Micro-Markets in Michigan & Colorado</title>
 <meta name="description" content="Pop 'N' Stop Markets installs and fully manages fresh micro-markets inside your workplace at zero cost to your company. Serving Michigan and Colorado.">
 
@@ -587,9 +587,7 @@ footer { background: var(--navy-deep); padding: 64px 6% 36px; }
   }
   .mobile-nav a:active { color: var(--gold); }
   .mobile-nav a .mn-icon { font-size: 18px; line-height: 1; }
-  .mobile-nav a.mn-cta {
-    color: var(--gold);
-  }
+  .mobile-nav a.active { color: var(--gold); }
 }
 </style>
 </head>
@@ -1132,6 +1130,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (el) { e.preventDefault(); window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 80, behavior: 'smooth' }); }
   });
 });
+
+// Mobile nav active section highlight
+(function() {
+  const navLinks = document.querySelectorAll('.mobile-nav a');
+  const sectionIds = ['how', 'features', 'why', 'contact'];
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  function setActive(id) {
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+    });
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, { threshold: 0.35 });
+
+  sections.forEach(s => observer.observe(s));
+})();
 
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(btn => {
