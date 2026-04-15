@@ -14,6 +14,35 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Pop 'N' Stop Markets | Workplace Micro-Markets in Michigan & Colorado</title>
 <meta name="description" content="Pop 'N' Stop Markets installs and fully manages fresh micro-markets inside your workplace at zero cost to your company. Serving Michigan and Colorado.">
+<meta name="keywords" content="workplace micro-market Michigan, free break room market Detroit, office micro-market Colorado, Denver workplace snack market, vending alternative Michigan, micro-market installation">
+<link rel="canonical" href="https://www.popnstopmarkets.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.popnstopmarkets.com/">
+<meta property="og:title" content="Pop 'N' Stop Markets | Free Workplace Micro-Markets in Michigan & Colorado">
+<meta property="og:description" content="We install and fully manage fresh micro-markets inside your workplace at zero cost to your company. No vending machines — a real market experience. Serving Michigan and Colorado.">
+<meta property="og:site_name" content="Pop 'N' Stop Markets">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Pop 'N' Stop Markets",
+  "description": "Pop 'N' Stop Markets installs and fully manages fresh micro-markets inside your workplace at zero cost to your company.",
+  "url": "https://www.popnstopmarkets.com/",
+  "telephone": "+12485094314",
+  "email": "popnstopco@gmail.com",
+  "areaServed": [
+    { "@type": "State", "name": "Michigan" },
+    { "@type": "State", "name": "Colorado" }
+  ],
+  "serviceType": "Workplace Micro-Market Installation and Management",
+  "priceRange": "Free to employer",
+  "sameAs": []
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -997,7 +1026,7 @@ async function fetchGoogleReviews() {
             <div class="promise-icon">📞</div>
             <div>
               <h4>Call or Text Us</h4>
-              <p><a href="tel:+12485094314" style="color:var(--blue);text-decoration:none;font-weight:600;">(248) 509-4314</a></p>
+              <p><a href="tel:+12485094314" style="color:var(--blue);text-decoration:none;font-weight:600;" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'body_section'})">(248) 509-4314</a></p>
             </div>
           </div>
           <div class="promise-item">
@@ -1082,7 +1111,7 @@ async function fetchGoogleReviews() {
       </div>
       <div class="footer-col">
         <h4>Get in Touch</h4>
-        <a href="tel:+12485094314">(248) 509-4314</a>
+        <a href="tel:+12485094314" onclick="gtag('event','phone_click',{event_category:'engagement',event_label:'footer'})">(248) 509-4314</a>
         <a href="mailto:popnstopco@gmail.com">popnstopco@gmail.com</a>
         <a href="#contact">Request a Quote</a>
       </div>
@@ -1274,6 +1303,7 @@ document.getElementById('lead-form').addEventListener('submit', async e => {
     } catch(err) { console.warn('EmailJS failed:', err.message); }
   }
 
+  gtag('event', 'generate_lead', { event_category: 'engagement', event_label: 'quote_form', market });
   document.getElementById('form-view').style.display = 'none';
   document.getElementById('form-success').classList.add('show');
   toast("Request received! We'll be in touch within 48 hours.", 'ok');
